@@ -1,0 +1,10 @@
+[project]
+name = "dune-mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dune-client>=1.7.10",
+    "pydantic-ai-slim[mcp]>=1.0.1",
+]
