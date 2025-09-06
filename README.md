@@ -21,6 +21,26 @@ This MCP server provides the following tools:
 
 ## Setup
 
+### Quick Start with Make
+
+1. **Install dependencies:**
+   ```bash
+   make install
+   ```
+
+2. **Set up environment:**
+   ```bash
+   cp .env.example .env
+   # Edit .env and add your Dune API key
+   ```
+
+3. **Run the MCP server:**
+   ```bash
+   make run
+   ```
+
+### Manual Setup
+
 1. **Install dependencies:**
    ```bash
    uv install
@@ -28,6 +48,8 @@ This MCP server provides the following tools:
 
 2. **Set up environment variables:**
    ```bash
+   cp .env.example .env
+   # Edit .env file or export directly:
    export DUNE_API_KEY="your_dune_api_key_here"
    ```
    
@@ -39,6 +61,44 @@ This MCP server provides the following tools:
    ```
 
 ## Usage
+
+### With Claude Code
+
+Use the MCP server directly with Claude Code by running:
+
+```bash
+# Start the server
+uv run python main.py
+
+# Then in Claude Code, the server will be automatically available
+# You can interact with Dune Analytics through natural language:
+```
+
+Example interactions:
+- "Get information about Dune query 1234567"
+- "Execute query 5678 with blockchain parameter set to ethereum"
+- "Help me create a query to analyze DEX volume for the past week"
+- "Build a SQL template for tracking token holder changes"
+
+### With Cursor
+
+Add to your Cursor MCP configuration in settings:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "dune-analytics": {
+        "command": "uv",
+        "args": ["run", "python", "/absolute/path/to/dune-mcp/main.py"],
+        "env": {
+          "DUNE_API_KEY": "your_api_key_here"
+        }
+      }
+    }
+  }
+}
+```
 
 ### With Claude Desktop
 
@@ -63,6 +123,8 @@ Add to your Claude Desktop MCP configuration:
 Run the test client to verify functionality:
 
 ```bash
+make test
+# or manually:
 uv run python test_client.py
 ```
 

@@ -7,4 +7,5 @@ requires-python = ">=3.11"
 dependencies = [
     "dune-client>=1.7.10",
     "pydantic-ai-slim[mcp]>=1.0.1",
+    "python-dotenv>=1.1.1",
 ]

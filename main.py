@@ -1,5 +1,6 @@
 import os
 from typing import List, Optional, Dict, Any
+from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 from dune_client.client import DuneClient
 from dune_client.query import QueryBase
@@ -303,4 +304,6 @@ FROM {from_clause}
         return {"error": str(e)}
 
 if __name__ == "__main__":
+    # Load environment variables from .env file
+    load_dotenv()
     server.run()
